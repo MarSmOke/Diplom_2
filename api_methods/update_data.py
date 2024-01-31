@@ -1,7 +1,11 @@
 import requests
-import data
+import urls
+import allure
 
 
-def update_data(payload, token):
-    response = requests.patch(url=data.main_url+data.user_url, data=payload, headers={'Authorization': f'{token}'})
-    return response
+class UpdateUserData:
+    @allure.step('Update user data')
+    def update_data(self, payload, token):
+        response = requests.patch(url=urls.main_url + urls.user_url, data=payload,
+                                  headers={'Authorization': f'{token}'})
+        return response

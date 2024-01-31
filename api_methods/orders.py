@@ -1,18 +1,21 @@
 import requests
-import data
-import json
+import urls
+import allure
 
 
-def create_order(payload, token):
-    response = requests.post(url=data.main_url+data.order_url, data=payload, headers={'Authorization': f'{token}'})
-    return response
+class Order:
+    @allure.step('Create order')
+    def create_order(self, payload, token):
+        response = requests.post(url=urls.main_url + urls.order_url, data=payload,
+                                 headers={'Authorization': f'{token}'})
+        return response
 
+    @allure.step('Get order')
+    def get_order(self, token):
+        response = requests.get(url=urls.main_url + urls.order_url, headers={'Authorization': f'{token}'})
+        return response
 
-def get_order(token):
-    response = requests.get(url=data.main_url+data.order_url, headers={'Authorization': f'{token}'})
-    return response
-
-
-def get_ingredients():
-    response = requests.get(url=data.main_url+data.ingredients_url)
-    return response
+    @allure.step('Get ingredients')
+    def get_ingredients(self):
+        response = requests.get(url=urls.main_url + urls.ingredients_url)
+        return response

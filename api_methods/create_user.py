@@ -1,8 +1,11 @@
 import requests
-import data
+import urls
+import allure
 
 
-def register_user(payload):
-    response = requests.post(url=data.main_url+data.create_url, data=payload)
-    return response
+class CreateUser:
+    @allure.step('Create user')
+    def register_user(self, payload):
+        response = requests.post(url=urls.main_url + urls.create_url, data=payload)
+        return response
 

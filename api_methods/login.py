@@ -1,8 +1,11 @@
 import requests
-import data
+import urls
+import allure
 
 
-def user_login(payload):
-    response = requests.post(url=data.main_url+data.login_url, data=payload)
-    return response
+class LoginUser:
+    @allure.step('Login user')
+    def user_login(self, payload):
+        response = requests.post(url=urls.main_url + urls.login_url, data=payload)
+        return response
 
