@@ -3,11 +3,13 @@ import string
 from api_methods.orders import Order
 
 
-class Helpers(Order):
-    def add_ingredients(self):
+class Helpers:
+    @staticmethod
+    def add_ingredients():
         order_data = {"ingredients": []}
-        order_data["ingredients"].append(Order.get_ingredients(self).json()["data"][0].get("_id"))
-        order_data["ingredients"].append(Order.get_ingredients(self).json()["data"][1].get("_id"))
+        order = Order()
+        order_data["ingredients"].append(order.get_ingredients().json()["data"][0].get("_id"))
+        order_data["ingredients"].append(order.get_ingredients().json()["data"][1].get("_id"))
         return order_data
 
     @staticmethod
@@ -16,11 +18,10 @@ class Helpers(Order):
         random_string = ''.join(random.choice(letters) for i in range(length))
         return random_string
 
-    @staticmethod
-    def generate_credentials():
-        email = Helpers.generate_random_string(10)
-        password = Helpers.generate_random_string(10)
-        name = Helpers.generate_random_string(10)
+    def generate_credentials(self):
+        email = self.generate_random_string(10)
+        password = self.generate_random_string(10)
+        name = self.generate_random_string(10)
         payload = {
             "email": f'{email}@ya.ru',
             "password": password,
