@@ -1,5 +1,7 @@
 ## API tests for Stellar Burgers
 
+Url: https://stellarburgers.nomoreparties.site/
+
 **Creating a user - test_create_user:**
 - a unique user;
 - a user who is already registered;
