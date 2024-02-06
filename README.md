@@ -1,26 +1,28 @@
-Создание пользователя - test_create_user:
-- уникального пользователя;
-- пользователя, который уже зарегистрирован;
-- пользователя без одного из обязательных полей.
+## API tests for Stellar Burgers
 
-Логин пользователя - test_login:
-- логин под существующим пользователем,
-- логин с неверным логином и паролем.
+Creating a user - test_create_user:
+- a unique user;
+- a user who is already registered;
+- a user without one of the required fields.
 
-Изменение данных пользователя - test_update_data:
-- с авторизацией,
-- без авторизации.
+User login - test_login:
+- login under an existing user,
+- login with incorrect login and password.
 
-Создание заказа - test_create_order:
-- с авторизацией,
-- без авторизации,
-- с ингредиентами,
-- без ингредиентов,
-- с неверным хешем ингредиентов.
+Changing user data - test_update_data:
+- with authorization,
+- without authorization.
 
-Получение заказов конкретного пользователя - test_get_order:
-- авторизованный пользователь,
-- неавторизованный пользователь.
+Creating an order - test_create_order:
+- with authorization,
+- without authorization,
+- with ingredients,
+- no ingredients,
+- with an incorrect ingredient hash.
 
-Запуск: python -m pytest tests \
-Чтение результатов запуска: allure serve allure_results
+Receiving orders from a specific user - test_get_order:
+- authorized user,
+- unauthorized user.
+
+Run: python -m pytest tests\
+Reading run results: allure serve allure_results
